@@ -213,6 +213,13 @@ function App() {
               date="10 October 2025" 
             />
             
+            <CertificateCard 
+              image="src/assets/images/Thaimooc.jpg"
+              title="วิทยาการคอมพิวเตอร์เบื้องต้น" 
+              issuer="Thaimooc" 
+              date="23 January 2026" 
+            />
+            
           </div>
         </div>
       </section>
