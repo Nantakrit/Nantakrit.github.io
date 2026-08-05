@@ -1,31 +1,46 @@
 import { useState } from 'react';
-import './App.css';
 import GradePdf from './assets/images/Grade.pdf';
 
 // Import รูปภาพ
 import ProfileImg from './assets/images/Khen01.png';
 import ProjectApmImg from './assets/images/apm01.png';
 import ProjectHlImg from './assets/images/hl01.png';
-// แนะนำให้ Import รูปภาพ Certificate ที่นี่ เช่น
-// import Cert01Img from './assets/images/cert01.jpg';
+import ThaiLlmImg from './assets/images/ThaiLLM.jpg';
+import AiForThaiImg from './assets/images/AIforthai.jpg';
+import UxImg from './assets/images/UX.jpg';
+import JavaScriptImg from './assets/images/Javascript.png';
+import CcnaImg from './assets/images/CCNA.jpg';
+import ThaiMoocImg from './assets/images/Thaimooc.jpg';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="bg-gray-900 text-gray-100 font-sans antialiased selection:bg-blue-500 selection:text-white">
 
       {/* Navbar */}
       <nav className="fixed w-full z-20 top-0 start-0 border-b border-gray-800 bg-gray-900/90 backdrop-blur-sm">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <a href="#" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-3 rtl:space-x-reverse">
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">MyPortfolio</span>
           </a>
-          <div className="hidden w-full md:block md:w-auto">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center w-10 h-10 text-gray-300 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-controls="primary-navigation"
+            aria-expanded={isMenuOpen}
+            aria-label="เปิดหรือปิดเมนูนำทาง"
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          >
+            <span className="text-2xl" aria-hidden="true">{isMenuOpen ? '×' : '☰'}</span>
+          </button>
+          <div id="primary-navigation" className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}>
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-700 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
-              <li><a href="#about" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">เกี่ยวกับผม</a></li>
-              <li><a href="#skills" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ทักษะ</a></li>
-              <li><a href="#projects" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ผลงาน</a></li>
-              <li><a href="#certificates" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ประกาศนียบัตร</a></li>
-              <li><a href="#contact" className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ติดต่อ</a></li>
+              <li><a href="#about" onClick={() => setIsMenuOpen(false)} className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">เกี่ยวกับผม</a></li>
+              <li><a href="#skills" onClick={() => setIsMenuOpen(false)} className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ทักษะ</a></li>
+              <li><a href="#projects" onClick={() => setIsMenuOpen(false)} className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ผลงาน</a></li>
+              <li><a href="#certificates" onClick={() => setIsMenuOpen(false)} className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ประกาศนียบัตร</a></li>
+              <li><a href="#contact" onClick={() => setIsMenuOpen(false)} className="block py-2 px-3 text-gray-300 rounded hover:bg-gray-700 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0">ติดต่อ</a></li>
             </ul>
           </div>
         </div>
@@ -179,42 +194,42 @@ function App() {
           <div className="flex flex-col space-y-8 max-w-4xl mx-auto">
             
             <CertificateCard 
-              image="src/assets/images/ThaiLLM.jpg" 
+              image={ThaiLlmImg}
               title="Thai Large Langugage Model (ThaiLLM)" 
               issuer="ศูนย์เทคโนโลยีสารสนเทศและคอมพิวเตอร์แห่งชาติ" 
               date="5 July 2025" 
             />
             
             <CertificateCard 
-              image="src/assets/images/Aiforthai.jpg"
+              image={AiForThaiImg}
               title="Ai For Thai LLMs ทางการแพทย์ Certificate" 
               issuer="ศูนย์เทคโนโลยีสารสนเทศและคอมพิวเตอร์แห่งชาติ" 
               date="6 July 2025" 
             />
             
             <CertificateCard 
-              image="src/assets/images/UX.jpg"
+              image={UxImg}
               title="Foundations of User Experience (UX) Design" 
               issuer="Coursera" 
               date="31 August 2024" 
             />
 
             <CertificateCard 
-              image="src/assets/images/Javascript.png"
+              image={JavaScriptImg}
               title="JavaScript" 
               issuer="FreeCodeCamp" 
               date="29 January 2026" 
             />
 
             <CertificateCard 
-              image="src/assets/images/CCNA.jpg"
+              image={CcnaImg}
               title="CCNA: Introduction to Network" 
               issuer="Cisco" 
               date="10 October 2025" 
             />
             
             <CertificateCard 
-              image="src/assets/images/Thaimooc.jpg"
+              image={ThaiMoocImg}
               title="วิทยาการคอมพิวเตอร์เบื้องต้น" 
               issuer="Thaimooc" 
               date="23 January 2026" 
